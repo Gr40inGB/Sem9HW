@@ -12,9 +12,7 @@ bool CheckStartEnd(string s)
     foreach (var symb in s)
     {
         if (symb == '(' || symb == '{' || symb == '[')
-        {
             startEnd.Push(symb.ToString());
-        }
 
         else if (symb == ')' || symb == '}' || symb == ']')
         {
@@ -22,36 +20,25 @@ bool CheckStartEnd(string s)
             {
                 string tempStr = startSymb.ToString() + symb.ToString();
                 if (tempStr == "()" || tempStr == "{}" || tempStr == "[]")
-                {
                     startEnd.Pop();
-                }
                 else
-                {
                     return false;
-                }
             }
             else
-            {
                 return false;
-            }
-
         }
     }
-
     if (startEnd.Count == 0) return true;
     else return false;
-
 }
 
 void Main()
 {
     System.Console.WriteLine("Введите строку для анализа расположений скобок");
-
     string stringForCheck = Console.ReadLine()!;
     bool checkOk = CheckStartEnd(stringForCheck);
     if (checkOk) System.Console.WriteLine("Ряд верен");
     else System.Console.WriteLine("Ряд неверен");
-
 }
 
 Main();
